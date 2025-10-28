@@ -18,7 +18,9 @@ class Worker(Thread):
         super().__init__(daemon=True)
         
     def run(self):
+        count = 0
         while True:
+            count += 1
             tbd_url = self.frontier.get_tbd_url()
             if not tbd_url:
                 self.logger.info("Frontier is empty. Stopping Crawler.")
@@ -32,3 +34,4 @@ class Worker(Thread):
                 self.frontier.add_url(scraped_url)
             self.frontier.mark_url_complete(tbd_url)
             time.sleep(self.config.time_delay)
+        print(count)

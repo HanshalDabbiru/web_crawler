@@ -1,10 +1,12 @@
 import re
 from bs4 import BeautifulSoup
-from urllib.parse import urlparse, urlunparse
+from urllib.parse import urlparse, urldefrag
 
-valid_urls = [".ics.uci.edu/", ".cs.uci.edu/", "informatics.uci.edu", "stats.uci.edu"]
+valid_urls = [".ics.uci.edu", ".cs.uci.edu", "informatics.uci.edu", "stat.uci.edu"]
+visited_urls = set()
 
 def scraper(url, resp):
+    visited_urls.add(url)
     links = extract_next_links(url, resp)
     return [link for link in links if is_valid(link)]
 
@@ -23,9 +25,9 @@ def extract_next_links(url, resp):
 
     soup = BeautifulSoup(resp.raw_response.content, "lxml")
     links = []
-    for link in soup.findall("a", href=True):
-        url = urlunparse(link["href"]._replace(fragment="")
-        links.append(link["href"])
+    for link in soup.find_all("a", href=True):
+        url, _ = urldefrag(link["href"])
+        links.append(url)
     return links
 
 def is_valid(url):
@@ -33,6 +35,16 @@ def is_valid(url):
     # If you decide to crawl it, return True; otherwise return False.
     # There are already some conditions that return False.
     try:
+        if url in visited_urls:
+            return False
+        
+        if re.search(r"(calendar|ical|event|events|day|month|year|login)", url, re.IGNORECASE):
+            return False
+    
+        # Disallow URLs with date-like patterns (YYYY-MM-DD)
+        if re.search(r"\d{4}-\d{2}-\d{2}", url):
+            return False
+
         parsed = urlparse(url)
         if parsed.scheme not in set(["http", "https"]):
             return False
