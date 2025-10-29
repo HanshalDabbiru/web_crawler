@@ -2,11 +2,10 @@ import re
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse, urldefrag
 
-valid_urls = [".ics.uci.edu", ".cs.uci.edu", "informatics.uci.edu", "stat.uci.edu"]
+valid_urls = [".ics.uci.edu", ".cs.uci.edu", ".informatics.uci.edu", ".stat.uci.edu"]
 visited_urls = set()
 
 def scraper(url, resp):
-    visited_urls.add(url)
     links = extract_next_links(url, resp)
     return [link for link in links if is_valid(link)]
 
@@ -37,6 +36,8 @@ def is_valid(url):
     try:
         if url in visited_urls:
             return False
+        else:
+            visited_urls.add(url)
         
         if re.search(r"(calendar|ical|event|events|day|month|year|login)", url, re.IGNORECASE):
             return False
@@ -67,3 +68,5 @@ def is_valid(url):
     except TypeError:
         print ("TypeError for ", parsed)
         raise
+    except ValueError:
+        return False
