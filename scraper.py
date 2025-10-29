@@ -1,13 +1,21 @@
 import re
+import tokenizer
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse, urldefrag
 
 valid_urls = [".ics.uci.edu", ".cs.uci.edu", ".informatics.uci.edu", ".stat.uci.edu"]
 visited_urls = set()
+total_freq = {}
 
 def scraper(url, resp):
     links = extract_next_links(url, resp)
+    tokens = get_tokens(resp)
     return [link for link in links if is_valid(link)]
+
+def get_tokens(resp):
+    tokens = tokenizer.tokenize(resp.raw_response.content)
+    freqs = tokenizer.computeWordFrequencies(tokens)
+    return freqs
 
 def extract_next_links(url, resp):
     # Implementation required.
