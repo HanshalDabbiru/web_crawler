@@ -5,17 +5,22 @@ from urllib.parse import urlparse, urldefrag
 
 valid_urls = [".ics.uci.edu", ".cs.uci.edu", ".informatics.uci.edu", ".stat.uci.edu"]
 visited_urls = set()
+subdomains = {}
 total_freq = {}
+
+def stats():
+    return visited_urls, total_freq, subdomains
 
 def scraper(url, resp):
     links = extract_next_links(url, resp)
-    tokens = get_tokens(resp)
+    update_token_counts(resp)
     return [link for link in links if is_valid(link)]
 
-def get_tokens(resp):
+def update_token_counts(resp):
     tokens = tokenizer.tokenize(resp.raw_response.content)
     freqs = tokenizer.computeWordFrequencies(tokens)
-    return freqs
+    for word, f in freqs.items():
+        total_freq[word] = total_freq.get(word, 0) + f
 
 def extract_next_links(url, resp):
     # Implementation required.
@@ -47,7 +52,7 @@ def is_valid(url):
         else:
             visited_urls.add(url)
         
-        if re.search(r"(calendar|ical|event|events|day|month|year|login)", url, re.IGNORECASE):
+        if re.search(r"(calendar|ical|login)", url, re.IGNORECASE): 
             return False
     
         # Disallow URLs with date-like patterns (YYYY-MM-DD)

@@ -2,7 +2,7 @@ import sys
 
 # this runs in O(n) time where n is the number of characters in the file
 def read_content(resp):
-    content = resp.raw_response.content.decode("utf-8", errors="ignore")
+    content = resp.decode("utf-8", errors="ignore")
     for line in content.splitlines():
         token = []
         for c in line:
