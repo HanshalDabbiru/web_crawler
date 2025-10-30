@@ -7,20 +7,24 @@ valid_urls = [".ics.uci.edu", ".cs.uci.edu", ".informatics.uci.edu", ".stat.uci.
 visited_urls = set()
 subdomains = {}
 total_freq = {}
+longest_page = ("", 0)
 
 def stats():
     return visited_urls, total_freq, subdomains
 
 def scraper(url, resp):
     links = extract_next_links(url, resp)
-    update_token_counts(resp)
+    update_token_counts(url, resp)
     return [link for link in links if is_valid(link)]
 
-def update_token_counts(resp):
+def update_token_counts(url, resp):
+    global longest_page
     tokens = tokenizer.tokenize(resp.raw_response.content)
     freqs = tokenizer.computeWordFrequencies(tokens)
     for word, f in freqs.items():
         total_freq[word] = total_freq.get(word, 0) + f
+    if len(tokens) > longest_page[1]:
+        longest_page = (url, len(tokens))
 
 def extract_next_links(url, resp):
     # Implementation required.
