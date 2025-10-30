@@ -12,9 +12,15 @@ longest_page = ("", 0)
 def stats():
     return visited_urls, total_freq, subdomains
 
+def unique_subdomains(url):
+    parsed = urlparse(url).netloc
+    subdomains[parsed] = subdomains.get(parsed, 0) + 1
+    return
+
 def scraper(url, resp):
     links = extract_next_links(url, resp)
     update_token_counts(url, resp)
+    subdomains = unique_subdomains(url)
     return [link for link in links if is_valid(link)]
 
 def update_token_counts(url, resp):

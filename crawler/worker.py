@@ -36,3 +36,5 @@ class Worker(Thread):
             time.sleep(self.config.time_delay)
         print(count)
         visited_urls, total_freq, subdomains = scraper.stats()
+        for s, c in subdomains.items():
+            print(f"{s}, {c}")    # remember to order alphabetically
