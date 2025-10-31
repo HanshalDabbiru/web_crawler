@@ -1,5 +1,5 @@
 from threading import Thread
-
+import heapq
 from inspect import getsource
 from utils.download import download
 from utils import get_logger
@@ -35,6 +35,18 @@ class Worker(Thread):
             self.frontier.mark_url_complete(tbd_url)
             time.sleep(self.config.time_delay)
         print(count)
-        visited_urls, total_freq, subdomains = scraper.stats()
+        visited_urls, total_freq, subdomains, longest = scraper.stats()
+
+        print(longest)
+        
+        print("Subdomain Counts")
         for s, c in subdomains.items():
             print(f"{s}, {c}")    # remember to order alphabetically
+        top_50 = self.find_top_fifty(total_freq)
+        print("Word Frequncies")
+        for counts in top_50:
+            print(counts[0], counts[1])
+
+
+    def find_top_fifty(self, total_freqs):
+        return heapq.nlargest(50, total_freqs.items(), key=lambda x: x[1])

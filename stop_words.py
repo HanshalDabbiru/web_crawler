@@ -1,6 +1,3 @@
-import sys
-import re
-
 stop_words = {
     "a", "about", "above", "after", "again", "against", "all", "am", "an", "and", 
     "any", "are", "aren't", "as", "at", "be", "because", "been", "before", "being", 
@@ -22,31 +19,3 @@ stop_words = {
     "you", "you'd", "you'll", "you're", "you've", "your", "yours", "yourself", 
     "yourselves"
 }
-
-def tokenize(content):
-    content = content.lower()
-    tokens = re.findall(r'\b\w+\b', content) 
-    return [token for token in tokens if token not in stop_words]
-
-# this runs in O(n) time where n is the number of elements in tokens
-def computeWordFrequencies(tokens):
-    freq = {}
-    for token in tokens:
-        if token in freq:
-            freq[token] += 1
-        else:
-            freq[token] = 1
-    return freq
-
-# this runs in O(n log(n)) time where n is the size of freq
-def print_freqs(freq):
-    for token in sorted(freq, key=freq.get, reverse=True):
-        print(token, freq[token])
-
-def main():
-    file = sys.argv[1]
-    print_freqs(computeWordFrequencies(tokenize(file)))
-
-
-if __name__ == "__main__":
-    main()

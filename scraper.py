@@ -1,7 +1,7 @@
 import re
 import tokenizer
 from bs4 import BeautifulSoup
-from urllib.parse import urlparse, urldefrag
+from urllib.parse import urlparse, urldefrag, urljoin
 
 valid_urls = [".ics.uci.edu", ".cs.uci.edu", ".informatics.uci.edu", ".stat.uci.edu"]
 visited_urls = set()
@@ -10,29 +10,37 @@ total_freq = {}
 longest_page = ("", 0)
 
 def stats():
-    return visited_urls, total_freq, subdomains
+    return visited_urls, total_freq, subdomains, longest_page
 
 def unique_subdomains(url):
     parsed = urlparse(url).netloc
     subdomains[parsed] = subdomains.get(parsed, 0) + 1
-    return
 
 def scraper(url, resp):
-    links = extract_next_links(url, resp)
-    update_token_counts(url, resp)
-    subdomains = unique_subdomains(url)
+    if resp.status < 200 or resp.status > 299:
+        return []
+    
+    content_string = resp.raw_response.content.decode("utf-8", errors="replace")
+    soup = BeautifulSoup(content_string, "lxml")
+
+    links = extract_next_links(url, resp, soup)
+    update_token_counts(url, soup)
     return [link for link in links if is_valid(link)]
 
-def update_token_counts(url, resp):
+def update_token_counts(url, soup):
     global longest_page
-    tokens = tokenizer.tokenize(resp.raw_response.content)
+
+    text = soup.get_text(separator=' ', strip=True)
+    tokens = tokenizer.tokenize(text)
     freqs = tokenizer.computeWordFrequencies(tokens)
     for word, f in freqs.items():
         total_freq[word] = total_freq.get(word, 0) + f
+
     if len(tokens) > longest_page[1]:
         longest_page = (url, len(tokens))
 
-def extract_next_links(url, resp):
+
+def extract_next_links(url, resp, soup):
     # Implementation required.
     # url: the URL that was used to get the page
     # resp.url: the actual url of the page
@@ -42,15 +50,14 @@ def extract_next_links(url, resp):
     #         resp.raw_response.url: the url, again
     #         resp.raw_response.content: the content of the page!
     # Return a list with the hyperlinks (as strings) scrapped from resp.raw_response.content
-    if resp.status != 200:
-        return list()
-
-    soup = BeautifulSoup(resp.raw_response.content, "lxml")
     links = []
     for link in soup.find_all("a", href=True):
-        url, _ = urldefrag(link["href"])
-        links.append(url)
+        url_defrag, _ = urldefrag(link["href"])
+        absolute_url = urljoin(resp.url, url_defrag)
+        links.append(absolute_url)
     return links
+
+
 
 def is_valid(url):
     # Decide whether to crawl this url or not. 
@@ -61,12 +68,7 @@ def is_valid(url):
             return False
         else:
             visited_urls.add(url)
-        
-        if re.search(r"(calendar|ical|login)", url, re.IGNORECASE): 
-            return False
-    
-        # Disallow URLs with date-like patterns (YYYY-MM-DD)
-        if re.search(r"\d{4}-\d{2}-\d{2}", url):
+        if re.search(r"(ical|login|events/)", url, re.IGNORECASE): 
             return False
 
         parsed = urlparse(url)
