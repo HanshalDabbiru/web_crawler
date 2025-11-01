@@ -25,6 +25,7 @@ def scraper(url, resp):
 
     links = extract_next_links(url, resp, soup)
     update_token_counts(url, soup)
+    unique_subdomains(url)
     return [link for link in links if is_valid(link)]
 
 def update_token_counts(url, soup):
@@ -71,7 +72,7 @@ def is_valid(url):
             return False
         else:
             visited_urls.add(url)
-        if re.search(r"(ical|login|events/|doku|share=)", url, re.IGNORECASE): 
+        if re.search(r"(ical|login|events|wics|ngs|isg|grape|doku)", url, re.IGNORECASE): 
             return False
 
         parsed = urlparse(url)
@@ -79,10 +80,29 @@ def is_valid(url):
             return False
 
         # Makes sure the url is in one of the allowed domains
-        pattern = "(" + "|".join(re.escape(url) for url in valid_urls) + ")" 
-        if not re.search(pattern, parsed.netloc):
-            return False
+        valid_domains = (
+            "ics.uci.edu",
+            "cs.uci.edu",
+            "informatics.uci.edu",
+            "stat.uci.edu",
+        )
+        blocked_domains = ("eecs.uci.edu", "cecs.uci.edu", "physics.uci.edu")
 
+        hostname = parsed.hostname or ""
+        if not any(hostname.endswith(d) for d in valid_domains): # Check if your hostname == domain_name or wtv u have
+            return False
+        if any(hostname.endswith(b) for b in blocked_domains):
+            return False
+        
+        # avoid traps
+        if len(url) > 200:
+            return False
+        if re.match(r"^.*?(/.+?/).*?\1.*$", parsed.path):
+            return False
+        # no pictures
+        if re.match(r".*\.(jpg|png|pfd|ps|ps\.z)", parsed.query.lower()):
+            return False
+        
         return not re.match(
             r".*\.(css|js|bmp|gif|jpe?g|ico"
             + r"|png|tiff?|mid|mp2|mp3|mp4"
