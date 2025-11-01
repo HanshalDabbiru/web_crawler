@@ -52,9 +52,12 @@ def extract_next_links(url, resp, soup):
     # Return a list with the hyperlinks (as strings) scrapped from resp.raw_response.content
     links = []
     for link in soup.find_all("a", href=True):
-        url_defrag, _ = urldefrag(link["href"])
-        absolute_url = urljoin(resp.url, url_defrag)
-        links.append(absolute_url)
+        try: 
+            url_defrag, _ = urldefrag(link["href"])
+            absolute_url = urljoin(resp.url, url_defrag)
+            links.append(absolute_url)
+        except ValueError:
+            continue
     return links
 
 
@@ -68,7 +71,7 @@ def is_valid(url):
             return False
         else:
             visited_urls.add(url)
-        if re.search(r"(ical|login|events/)", url, re.IGNORECASE): 
+        if re.search(r"(ical|login|events/|doku|share=)", url, re.IGNORECASE): 
             return False
 
         parsed = urlparse(url)
