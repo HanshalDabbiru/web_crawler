@@ -26,7 +26,7 @@ stop_words = {
 def tokenize(content):
     content = content.lower()
     tokens = re.findall(r'\b\w+\b', content) 
-    return [token for token in tokens if token not in stop_words]
+    return [token for token in tokens if token not in stop_words and len(tokens) > 1]
 
 # this runs in O(n) time where n is the number of elements in tokens
 def computeWordFrequencies(tokens):

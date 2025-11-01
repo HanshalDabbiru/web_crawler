@@ -72,7 +72,7 @@ def is_valid(url):
             return False
         else:
             visited_urls.add(url)
-        if re.search(r"(ical|login|events|wics|ngs|isg|grape|doku)", url, re.IGNORECASE): 
+        if re.search(r"(ical|login|events|wics|ngs|isg|grape|doku|~eppstein/pix|https://isg.ics.uci.edu/events/)", url, re.IGNORECASE): 
             return False
 
         parsed = urlparse(url)
