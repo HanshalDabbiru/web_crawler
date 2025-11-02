@@ -5,7 +5,7 @@ from utils.download import download
 from utils import get_logger
 import scraper
 import time
-
+import report
 
 class Worker(Thread):
     def __init__(self, worker_id, config, frontier):
@@ -34,6 +34,9 @@ class Worker(Thread):
                 self.frontier.add_url(scraped_url)
             self.frontier.mark_url_complete(tbd_url)
             time.sleep(self.config.time_delay)
+            if count % 500 == 0:
+                report.generate_report()
+
         print(count)
         visited_urls, total_freq, subdomains, longest = scraper.stats()
 

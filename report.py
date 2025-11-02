@@ -1,4 +1,5 @@
 import json
+from tokenizer import stop_words
 from scraper import stats
 
 def generate_report():
@@ -7,14 +8,11 @@ def generate_report():
     num_unique_pages = len(visited_urls)
 
     longest_page_url, longest_page_word_count = longest_page
-
-    with open("stopwords.txt") as f:
-        stopwords = set(word.strip().lower() for word in f.readlines())
-
+    
     filtered_freq = {
         word: freq
         for word, freq in total_freq.items()
-        if word.lower() not in stopwords and word.isalpha()
+        if word.lower() not in stop_words and word.isalpha()
     }
     top_50 = sorted(filtered_freq.items(), key=lambda x: x[1], reverse=True)[:50]
 
