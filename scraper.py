@@ -61,8 +61,6 @@ def extract_next_links(url, resp, soup):
             continue
     return links
 
-
-
 def is_valid(url):
     # Decide whether to crawl this url or not. 
     # If you decide to crawl it, return True; otherwise return False.
@@ -79,7 +77,6 @@ def is_valid(url):
         if parsed.scheme not in set(["http", "https"]):
             return False
 
-        # Makes sure the url is in one of the allowed domains
         valid_domains = (
             "ics.uci.edu",
             "cs.uci.edu",
@@ -89,7 +86,7 @@ def is_valid(url):
         blocked_domains = ("eecs.uci.edu", "cecs.uci.edu", "physics.uci.edu")
 
         hostname = parsed.hostname or ""
-        if not any(hostname.endswith(d) for d in valid_domains): # Check if your hostname == domain_name or wtv u have
+        if not any(hostname.endswith(d) for d in valid_domains):
             return False
         if any(hostname.endswith(b) for b in blocked_domains):
             return False

@@ -1,4 +1,3 @@
-import sys
 import re
 
 stop_words = {
@@ -26,27 +25,10 @@ stop_words = {
 def tokenize(content):
     content = content.lower()
     tokens = re.findall(r'\b\w+\b', content) 
-    return [token for token in tokens if token not in stop_words and len(token) > 1]
+    return [token for token in tokens if token.isalpha() and token not in stop_words and len(token) > 2]
 
-# this runs in O(n) time where n is the number of elements in tokens
 def computeWordFrequencies(tokens):
     freq = {}
     for token in tokens:
-        if token in freq:
-            freq[token] += 1
-        else:
-            freq[token] = 1
+        freq[token] = freq.get(token, 0) + 1
     return freq
-
-# this runs in O(n log(n)) time where n is the size of freq
-def print_freqs(freq):
-    for token in sorted(freq, key=freq.get, reverse=True):
-        print(token, freq[token])
-
-def main():
-    file = sys.argv[1]
-    print_freqs(computeWordFrequencies(tokenize(file)))
-
-
-if __name__ == "__main__":
-    main()

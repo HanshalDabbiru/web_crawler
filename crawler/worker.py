@@ -34,22 +34,14 @@ class Worker(Thread):
                 self.frontier.add_url(scraped_url)
             self.frontier.mark_url_complete(tbd_url)
             time.sleep(self.config.time_delay)
+
             if count % 500 == 0:
-                report.generate_report()
-
-        print(count)
-        visited_urls, total_freq, subdomains, longest = scraper.stats()
-
-        print(longest)
-        
-        print("Subdomain Counts")
-        for s, c in subdomains.items():
-            print(f"{s}, {c}")    # remember to order alphabetically
-        top_50 = self.find_top_fifty(total_freq)
-        print("Word Frequncies")
-        for counts in top_50:
-            print(counts[0], counts[1])
-
+                self.logger.info(f"Reached {count} pages — generating intermediate report...")
+                report.generate_report(full=False)
+            
+        self.logger.info("Generating final report...")
+        report.generate_report(full=True)
+        self.logger.info("Report generated successfully as 'report.txt'.")
 
     def find_top_fifty(self, total_freqs):
         return heapq.nlargest(50, total_freqs.items(), key=lambda x: x[1])
