@@ -3,7 +3,6 @@ import tokenizer
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse, urldefrag, urljoin
 
-valid_urls = [".ics.uci.edu", ".cs.uci.edu", ".informatics.uci.edu", ".stat.uci.edu"]
 visited_urls = set()
 subdomains = {}
 total_freq = {}
@@ -69,8 +68,8 @@ def is_valid(url):
         if url in visited_urls:
             return False
         else:
-            visited_urls.add(url)
-        if re.search(r"(ical|login|events|wics|ngs|isg|grape|doku|~eppstein/pix|https://isg.ics.uci.edu/events/)", url, re.IGNORECASE): 
+            visited_urls.add(url) #move yo end of func
+        if re.search(r"(ical|login|events|wics|ngs|grape|doku|~eppstein/pix|https://isg.ics.uci.edu/events/)", url, re.IGNORECASE): 
             return False
 
         parsed = urlparse(url)
@@ -108,7 +107,7 @@ def is_valid(url):
             + r"|data|dat|exe|bz2|tar|msi|bin|7z|psd|dmg|iso"
             + r"|epub|dll|cnf|tgz|sha1"
             + r"|thmx|mso|arff|rtf|jar|csv"
-            + r"|rm|smil|wmv|swf|wma|zip|rar|gz)$", parsed.path.lower())
+            + r"|rm|smil|wmv|swf|wma|zip|rar|gz)$", parsed.path.lower()) #add apk (http://www.ics.uci.edu/~seal/projects/deldroid/ArchManager.apk)
 
     except TypeError:
         print ("TypeError for ", parsed)

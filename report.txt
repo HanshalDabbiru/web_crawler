@@ -1,0 +1,335 @@
+
+=== Report Snapshot ===
+Number of unique pages: 2624
+
+Longest page: http://www.ics.uci.edu/compsci260p/archive/202302
+Word count: 3455
+
+
+=== Report Snapshot ===
+Number of unique pages: 4474
+
+Longest page: http://www.ics.uci.edu/compsci260p/archive/202302
+Word count: 3455
+
+
+=== Report Snapshot ===
+Number of unique pages: 6874
+
+Longest page: http://www.ics.uci.edu/~seal/projects/deldroid/ArchManager.apk
+Word count: 20713
+
+
+=== Report Snapshot ===
+Number of unique pages: 8860
+
+Longest page: http://www.ics.uci.edu/~seal/projects/deldroid/ArchManager.apk
+Word count: 20713
+
+
+=== Report Snapshot ===
+Number of unique pages: 11268
+
+Longest page: http://www.ics.uci.edu/~seal/projects/deldroid/ArchManager.apk
+Word count: 20713
+
+
+=== Report Snapshot ===
+Number of unique pages: 12980
+
+Longest page: http://www.ics.uci.edu/~seal/projects/deldroid/ArchManager.apk
+Word count: 20713
+
+
+=== Report Snapshot ===
+Number of unique pages: 14985
+
+Longest page: http://www.ics.uci.edu/~seal/projects/deldroid/ArchManager.apk
+Word count: 20713
+
+
+=== Report Snapshot ===
+Number of unique pages: 17504
+
+Longest page: https://www.ics.uci.edu/~eppstein/bibs/kpath.bib
+Word count: 26014
+
+
+=== Report Snapshot ===
+Number of unique pages: 18507
+
+Longest page: http://www.ics.uci.edu/~eppstein/pubs/pubs.ff
+Word count: 29918
+
+
+=== Report Snapshot ===
+Number of unique pages: 20165
+
+Longest page: http://www.ics.uci.edu/~eppstein/pubs/pubs.ff
+Word count: 29918
+
+
+=== Report Snapshot ===
+Number of unique pages: 22143
+
+Longest page: http://www.ics.uci.edu/~eppstein/pubs/pubs.ff
+Word count: 29918
+
+
+=== Report Snapshot ===
+Number of unique pages: 24508
+
+Longest page: http://www.ics.uci.edu/~eppstein/pubs/pubs.ff
+Word count: 29918
+
+
+=== Report Snapshot ===
+Number of unique pages: 57833
+
+Longest page: http://www.ics.uci.edu/~eppstein/pubs/pubs.ff
+Word count: 29918
+
+
+=== Report Snapshot ===
+Number of unique pages: 61219
+
+Longest page: http://www.ics.uci.edu/~eppstein/pubs/pubs.ff
+Word count: 29918
+
+
+=== Report Snapshot ===
+Number of unique pages: 62811
+
+Longest page: http://www.ics.uci.edu/~kay/wordlist.txt
+Word count: 384582
+
+
+=== Report Snapshot ===
+Number of unique pages: 64588
+
+Longest page: http://www.ics.uci.edu/~kay/wordlist.txt
+Word count: 384582
+
+
+=== Report Snapshot ===
+Number of unique pages: 66143
+
+Longest page: http://www.ics.uci.edu/~kay/wordlist.txt
+Word count: 384582
+
+
+=== Report Snapshot ===
+Number of unique pages: 66648
+
+Longest page: http://www.ics.uci.edu/~kay/wordlist.txt
+Word count: 384582
+
+
+=== Report Snapshot ===
+Number of unique pages: 68289
+
+Longest page: http://www.ics.uci.edu/~kay/wordlist.txt
+Word count: 384582
+
+
+=== Report Snapshot ===
+Number of unique pages: 69704
+
+Longest page: http://www.ics.uci.edu/~kay/wordlist.txt
+Word count: 384582
+
+
+=== Report Snapshot ===
+Number of unique pages: 71611
+
+Longest page: http://www.ics.uci.edu/~kay/wordlist.txt
+Word count: 384582
+
+
+=== Report Snapshot ===
+Number of unique pages: 72675
+
+Longest page: http://www.ics.uci.edu/~kay/wordlist.txt
+Word count: 384582
+
+
+=== Report Snapshot ===
+Number of unique pages: 74594
+
+Longest page: http://www.ics.uci.edu/~kay/wordlist.txt
+Word count: 384582
+
+
+=== Report Snapshot ===
+Number of unique pages: 76623
+
+Longest page: http://www.ics.uci.edu/~kay/wordlist.txt
+Word count: 384582
+
+
+=== Report Snapshot ===
+Number of unique pages: 78228
+
+Longest page: http://www.ics.uci.edu/~kay/wordlist.txt
+Word count: 384582
+
+
+=== Final Snapshot ===
+Number of unique pages: 78273
+
+Longest page: http://www.ics.uci.edu/~kay/wordlist.txt
+Word count: 384582
+
+50 most common words:
+research: 32848
+markellekelly: 26855
+student: 23539
+ics: 23391
+computer: 20065
+software: 18691
+uci: 18014
+graduate: 17093
+data: 16855
+undergraduate: 16541
+science: 16470
+informatics: 16011
+learning: 15504
+information: 14907
+irvine: 14309
+may: 14295
+engineering: 14282
+html: 14069
+can: 13601
+students: 13057
+update: 12473
+university: 12240
+news: 11767
+occ: 11744
+september: 11679
+june: 11511
+automatic: 11450
+july: 11110
+faculty: 10765
+will: 10595
+time: 10425
+august: 10406
+ccc: 10378
+department: 10361
+march: 10156
+january: 10132
+design: 10119
+april: 10097
+november: 10010
+december: 9899
+february: 9752
+october: 9667
+systems: 9597
+projects: 9415
+ccoc: 9410
+alumni: 9399
+nnc: 8883
+one: 8731
+people: 8481
+ppt: 8302
+
+Subdomains:
+accessibility.ics.uci.edu, 6
+acoi.ics.uci.edu, 113
+aiclub.ics.uci.edu, 1
+archive-beta.ics.uci.edu, 9
+archive.ics.uci.edu, 181
+asterix.ics.uci.edu, 7
+betapro.proteomics.ics.uci.edu, 3
+capstone.cs.uci.edu, 8
+cdb.ics.uci.edu, 45
+cert.ics.uci.edu, 25
+chemdb.ics.uci.edu, 44
+chenli.ics.uci.edu, 10
+circadiomics.ics.uci.edu, 6
+cloudberry.ics.uci.edu, 43
+cml.ics.uci.edu, 219
+code.ics.uci.edu, 13
+computableplant.ics.uci.edu, 118
+courselisting.ics.uci.edu, 5
+create.ics.uci.edu, 4
+cs.ics.uci.edu, 10
+cs.uci.edu, 1
+cyberclub.ics.uci.edu, 11
+cybert.ics.uci.edu, 27
+dgillen.ics.uci.edu, 32
+ds4all.ics.uci.edu, 5
+duttgroup.ics.uci.edu, 132
+dynamo.ics.uci.edu, 33
+edgelab.ics.uci.edu, 7
+emj.ics.uci.edu, 42
+evoke.ics.uci.edu, 2
+flamingo.ics.uci.edu, 29
+fr.ics.uci.edu, 3
+frost.ics.uci.edu, 1
+futurehealth.ics.uci.edu, 104
+graphics.ics.uci.edu, 8
+graphmod.ics.uci.edu, 1
+hack.ics.uci.edu, 2
+hai.ics.uci.edu, 7
+hobbes.ics.uci.edu, 11
+hpi.ics.uci.edu, 5
+i-sensorium.ics.uci.edu, 5
+iasl.ics.uci.edu, 1
+icde2023.ics.uci.edu, 46
+ics.uci.edu, 2186
+industryshowcase.ics.uci.edu, 23
+informatics.ics.uci.edu, 2
+informatics.uci.edu, 3
+insite.ics.uci.edu, 9
+intranet.ics.uci.edu, 1
+ipubmed.ics.uci.edu, 1
+isg.ics.uci.edu, 225
+jgarcia.ics.uci.edu, 40
+luci.ics.uci.edu, 4
+mailman.ics.uci.edu, 40
+malek.ics.uci.edu, 1
+mcs.ics.uci.edu, 12
+mdogucu.ics.uci.edu, 1
+mds.ics.uci.edu, 7
+mhcid.ics.uci.edu, 20
+mlphysics.ics.uci.edu, 154
+motifmap.ics.uci.edu, 2
+mswe.ics.uci.edu, 11
+mupro.proteomics.ics.uci.edu, 3
+nalini.ics.uci.edu, 7
+oai.ics.uci.edu, 5
+pepito.proteomics.ics.uci.edu, 5
+plrg.ics.uci.edu, 84
+psearch.ics.uci.edu, 1
+radicle.ics.uci.edu, 6
+redmiles.ics.uci.edu, 1
+riscit.ics.uci.edu, 1
+scale.ics.uci.edu, 7
+scratch.proteomics.ics.uci.edu, 4
+seal.ics.uci.edu, 49
+selectpro.proteomics.ics.uci.edu, 7
+sherlock.ics.uci.edu, 7
+stairs.ics.uci.edu, 4
+stat.ics.uci.edu, 11
+stat.uci.edu, 2
+statconsulting.ics.uci.edu, 1
+statistics-stage.ics.uci.edu, 11
+student-council.ics.uci.edu, 6
+studentcouncil.ics.uci.edu, 6
+summeracademy.ics.uci.edu, 6
+tad.ics.uci.edu, 2
+tastier.ics.uci.edu, 1
+tutoring.ics.uci.edu, 5
+ugradforms.ics.uci.edu, 1
+unite.ics.uci.edu, 10
+vision.ics.uci.edu, 208
+wiki.ics.uci.edu, 1
+www-db.ics.uci.edu, 24
+www.cs.uci.edu, 4
+www.economics.uci.edu, 1
+www.ics.uci.edu, 3614
+www.informatics.ics.uci.edu, 1
+www.informatics.uci.edu, 1150
+www.nacs.uci.edu, 5
+www.stat.uci.edu, 152
+xtune.ics.uci.edu, 6
