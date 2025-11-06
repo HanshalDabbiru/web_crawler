@@ -18,4 +18,4 @@ stop_words = {
     "who", "who's", "whom", "why", "why's", "with", "won't", "would", "wouldn't", 
     "you", "you'd", "you'll", "you're", "you've", "your", "yours", "yourself", 
     "yourselves"
-}
+} 

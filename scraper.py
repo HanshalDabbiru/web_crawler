@@ -67,8 +67,7 @@ def is_valid(url):
     try:
         if url in visited_urls:
             return False
-        else:
-            visited_urls.add(url) #move yo end of func
+
         if re.search(r"(ical|login|events|wics|ngs|grape|doku|~eppstein/pix|https://isg.ics.uci.edu/events/)", url, re.IGNORECASE): 
             return False
 
@@ -99,7 +98,7 @@ def is_valid(url):
         if re.match(r".*\.(jpg|png|pfd|ps|ps\.z)", parsed.query.lower()):
             return False
         
-        return not re.match(
+        if re.match(
             r".*\.(css|js|bmp|gif|jpe?g|ico"
             + r"|png|tiff?|mid|mp2|mp3|mp4"
             + r"|wav|avi|mov|mpeg|ram|m4v|mkv|ogg|ogv|pdf"
@@ -107,7 +106,12 @@ def is_valid(url):
             + r"|data|dat|exe|bz2|tar|msi|bin|7z|psd|dmg|iso"
             + r"|epub|dll|cnf|tgz|sha1"
             + r"|thmx|mso|arff|rtf|jar|csv"
-            + r"|rm|smil|wmv|swf|wma|zip|rar|gz)$", parsed.path.lower()) #add apk (http://www.ics.uci.edu/~seal/projects/deldroid/ArchManager.apk)
+            + r"|rm|smil|wmv|swf|wma|zip|rar|gz|apk|ff)$", parsed.path.lower()):
+            return False
+        
+        visited_urls.add(url)
+        return True
+
 
     except TypeError:
         print ("TypeError for ", parsed)

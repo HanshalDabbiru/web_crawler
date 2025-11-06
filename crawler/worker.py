@@ -41,7 +41,7 @@ class Worker(Thread):
             
         self.logger.info("Generating final report...")
         report.generate_report(full=True)
-        self.logger.info("Report generated successfully as 'report.txt'.")
+        self.logger.info("Report generated successfully as 'report2.txt'.")
 
     def find_top_fifty(self, total_freqs):
         return heapq.nlargest(50, total_freqs.items(), key=lambda x: x[1])

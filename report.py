@@ -6,10 +6,10 @@ def generate_report(full=False):
     num_unique_pages = len(visited_urls)
     longest_page_url, longest_page_word_count = longest_page
 
-    with open("report.txt", "a") as f:
+    with open("report2.txt", "a") as f:
         f.write("\n=== Report Snapshot ===\n") if not full else f.write("\n=== Final Snapshot ===\n")
             
-        f.write(f"Number of unique pages: {num_unique_pages}\n\n")
+        f.write(f"Number of unique pages: {num_unique_pages}\n")
         f.write(f"Longest page: {longest_page_url}\n")
         f.write(f"Word count: {longest_page_word_count}\n\n")
 
